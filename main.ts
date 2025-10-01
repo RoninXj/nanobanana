@@ -21,7 +21,7 @@ async function callOpenRouter(messages: any[], apiKey: string): Promise<{ type: 
     if (!apiKey) { throw new Error("callOpenRouter received an empty apiKey."); }
     const openrouterPayload = { model: "google/gemini-2.5-flash-image-preview", messages };
     console.log("Sending payload to OpenRouter:", JSON.stringify(openrouterPayload, null, 2));
-    const apiResponse = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+    const apiResponse = await fetch("https://deeprouter.top/api/v1/chat/completions", {
         method: "POST", headers: { "Authorization": `Bearer ${apiKey}`, "Content-Type": "application/json" },
         body: JSON.stringify(openrouterPayload)
     });
@@ -43,7 +43,7 @@ async function callOpenRouter(messages: any[], apiKey: string): Promise<{ type: 
 // =======================================================
 // [修改] 函数接收一个 timeoutSeconds 参数
 async function callModelScope(model: string, apikey: string, parameters: any, timeoutSeconds: number): Promise<{ imageUrl: string }> {
-    const base_url = 'https://api-inference.modelscope.cn/';
+    const base_url = 'https://openrouter.ai/';
     const common_headers = {
         "Authorization": `Bearer ${apikey}`,
         "Content-Type": "application/json",
